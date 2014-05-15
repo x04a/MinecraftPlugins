@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class testPlug extends JavaPlugin implements Listener {
 
-	private ArrayList<Double> blocks;
+	private int blocks[];
 	
 	public void onEnable()
 	{
@@ -60,18 +60,19 @@ public final class testPlug extends JavaPlugin implements Listener {
 		l.setY(l.getBlockY()+ 3);
 		Block block = l.getBlock();
 		block.setType(Material.STONE);
-		blocks.add(l.getX());
 		l.setY(l.getY() + 2);
+		//blocks.add(l.getY());
 		for (int i = 0; i < 5; i++)
 		{		
-			blocks.add(l.getX());
 			l.setY(l.getY() + 1);
 			block = l.getBlock();
 			block.setType(Material.STONE);
+			blocks[i] = l.getBlockY();
 		}
 		for (int  i = 0; i < 5; i++)
 		{
-			l.setX(blocks.get(i) + 1);
+			l.setX(block.getX() + 1);
+			l.setY(blocks[i]);
 			block = l.getBlock();
 			block.setType(Material.STONE);
 		}
